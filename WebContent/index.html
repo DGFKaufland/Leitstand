@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Test Webservice für Sensoren</title>
+ 
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- Custom CSS -->
+    <link href="css/openhab.css" rel="stylesheet">
+   <link href="css/main.css" rel="stylesheet"> 
+     
+     
+    <!-- Custom Fonts  
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   	-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0" id="navibar"> 
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsed-navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>        
+            <div align="center"><h2>Leitstand Webservice</h2></div>
+            </nav>
+         
+            <!-- /.navbar-header -->
+
+
+        
+         <div id="page-wrapper">
+            <div class="row">
+                
+                <div class="col-lg-12" id="anzfeld">
+                    <h3>Willkommen beim Leitstand-Webservice</h3>
+                    
+                   	Markt:	<p id="store"></p>
+                   	Abteilung: <p id="departure"></p>
+                   	Sensor: <p id="sensor"></p>
+                   	
+                    Im oben aufgeführten Markt wurde in der Abteilung vom Sensor kritische Werte gemeldet!
+
+                   <br> Bitte leiten Sie die entsprechenden Schritte ein und stellen Sie die Schlummerzeit ein.
+                   
+                   <div id="Schlummerzeit">
+					<h3>Schlummerzeit (Minuten)</h3>
+					 		<input type="text" name="snooze_time" id="snooze_time" class="form-control" placeholder="Bitte Schlummerzeit in Minuten angeben"/> 
+					</div>
+					<div id="Beschreibung">
+					<h3>Beschreibung</h3>
+					 		<input type="text" name="description" id="description" class="form-control" placeholder="Bitte eingeleitete Maßnahmen angeben"/>
+					</div>
+					<form name="editMobileNotificationForm" role="form">
+					<div id="Beschreibung">
+					<h3>Prozess_ ID</h3>
+					 		<input type="text" name="process_id" id="process_id" class="form-control" readonly/>
+					</div>	
+					</form>			
+					<br><br>
+					<div>
+						<button type="button" id="btnSetSnoozeAndDescription" class="btn btn-default btn-lg">Schlummermodus</button>
+					</div>
+					
+					 <br><br>
+					 Falls Sie den Fehler lösen konnten, können Sie dies den Task auch direkt beenden. <br>
+					 Klicken Sie dazu bitte auf den Button "Problem behoben"
+					 <br>
+					 <div>               
+					<button type="button" id="btnSetTaskSolved" class="btn btn-default btn-lg">Problem behoben</button>
+           			</div>
+                </div>
+               
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+        
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    
+    <!-- Custom Theme JavaScript -->
+    <script src="js/Leitstand.js"></script>
+    
+</body>
+
+
+<script>
+var host = window.location.origin;
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+
+var process_id = getUrlParameter('process_id');
+//document.getElementById("process_id").innerHTML=process_id;
+//alert(process_id);
+
+var store = getUrlParameter('store');
+document.getElementById("store").innerHTML=store;
+//alert(store_id);
+
+
+var departure = getUrlParameter('departure');
+document.getElementById("departure").innerHTML=departure;
+//alert(departure_id);
+
+var sensor = getUrlParameter('sensor');
+document.getElementById("sensor").innerHTML=sensor;
+//alert(sensor_id);
+
+//alert (process_id + " ///" + store_id + " ---- " + departure_id + "()()"+ sensor_id);
+editMobileNotificationForm.process_id.value = process_id;
+
+</script>
+
+
+</html>
