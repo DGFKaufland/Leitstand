@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import models.MobileNotification;
+import services.SMTP;
 
 import org.apache.log4j.Logger;
 
@@ -31,8 +32,7 @@ public class MobileNotification_Controller
 
     private DBStatements_MobileNotification dbs_mn = new DBStatements_MobileNotification();
 
-    
-   
+     
     @POST
     @Path( "/setSnoozeAndMessage" )
     @Consumes( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
@@ -44,8 +44,7 @@ public class MobileNotification_Controller
     	
     	log.debug( "updateMobileNotificationSetSnoozeTimeAndMessage war erfolgreich" );
     }
-    
-    
+        
     @POST
     @Path( "/solveTask" )
     @Consumes( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
@@ -56,6 +55,25 @@ public class MobileNotification_Controller
     	dbs_mn.updateMobileNotificationSetSolved(mn);
     	
     	log.debug( "updateMobileNotificationSetSolved war erfolgreich" );
+    }
+    
+    
+    @POST
+    @Path( "/sendTestmail" )
+    @Consumes( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+    @Produces( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+    public void sendTestMail( final MobileNotification mn )
+    {
+        SMTP.sendMail(mn);
+    }
+    
+    @POST
+    @Path( "/sendMail" )
+    @Consumes( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+    @Produces( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
+    public void sendMail( final MobileNotification mn )
+    {
+        SMTP.sendMail(mn);
     }
     
     

@@ -10,11 +10,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import models.MobileNotification;
+
 
 public class SMTP {
 	
 	
-	public static void sendMail()
+	public static void sendMail(MobileNotification mn)
     {
 		
 		

@@ -80,8 +80,40 @@ $(function(){
     		}
     		return false;  
     	 }
- 
-    	 
+	 
+      	 //Testmail senden
+    	 $('#btnSendTestmail').unbind('click').click(function() {
+        	 sendTestmail();
+    		 return false;
+        	 });
+
+        	 function sendTestmail(){
+
+        		if(confirm("Wollen Sie wirklich eine Testmail senden ?")){
+        			   	
         		
+        			var id = 123;
+        			
+        	    	 $.ajax({
+        	    	 type: 'POST',
+        	    	 contentType: 'application/json',
+        	    	 url: host+'/Leitstand/services/MobileNotification/sendTestmail',
+        	    	 dataType: "json",
+        	    	 data: JSON.stringify({
+          	   	   		 "id": id
+          		 		}),
+        	    	 success: function(data, textStatus, jqXHR){
+        	    	 alert('Testmail wurde versendet');
+        	    	 $('#anzfeld').load('home.html');
+        	    	 },
+        	    	 error: function(jqXHR, textStatus, errorThrown){
+        	    	 alert('Testmail senden error: ' + textStatus);
+        	    	 }
+        	    	 });
+        		}
+        		return false;  
+        	 }
+        	 
+	 
 });
 
