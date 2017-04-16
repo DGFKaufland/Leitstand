@@ -23,7 +23,7 @@ $(function(){
   	   	 $.ajax({
   	   	   	 type: 'POST',
   	   	   	 contentType: 'application/json',
-  	   	   	 url: host+'/WebContent/Leitstand/services/MobileNotification/setSnoozeAndMessage',
+  	   	   	 url: host+'/services/MobileNotification/setSnoozeAndMessage',
   	   	   	 dataType: "json",
   	   	   	 data: JSON.stringify({
   	   	   		 "id": id,
@@ -61,7 +61,7 @@ $(function(){
     	    	 $.ajax({
     	    	 type: 'POST',
     	    	 contentType: 'application/json',
-    	    	 url: host+'/WebContent/Leitstand/services/MobileNotification/solveTask',
+    	    	 url: host+'/services/MobileNotification/solveTask',
     	    	 dataType: "json",
     	    	 data: JSON.stringify({
       	   	   		 "id": id,
@@ -102,7 +102,7 @@ $(function(){
         	    	 $.ajax({
         	    	 type: 'POST',
         	    	 contentType: 'application/json',
-        	    	 url: host+'/WebContent/Leitstand/services/MobileNotification/sendTestmail',
+        	    	 url: host+'/services/MobileNotification/sendTestmail',
         	    	 dataType: "json",
         	    	 data: JSON.stringify({
           	   	   		 "id": id,
