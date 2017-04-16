@@ -64,6 +64,7 @@ public class MobileNotification_Controller
     @Produces( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     public void sendTestMail( final MobileNotification mn )
     {
+    	//System.out.println(mn.getID());
         SMTP.sendMail(mn);
     }
     
@@ -72,7 +73,7 @@ public class MobileNotification_Controller
     @Consumes( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     @Produces( {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     public void sendMail( final MobileNotification mn )
-    {
+    {	
         SMTP.sendMail(mn);
     }
     

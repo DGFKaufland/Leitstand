@@ -80,18 +80,23 @@ $(function(){
     		}
     		return false;  
     	 }
-	 
-      	 //Testmail senden
-    	 $('#btnSendTestmail').unbind('click').click(function() {
-        	 sendTestmail();
+    	 
+    	 
+    	 
+    	 //Testmail senden
+    	 $('#btnSendTestmailToServer').unbind('click').click(function() {
+        	 sendTestmailToServer();
     		 return false;
         	 });
 
-        	 function sendTestmail(){
+        	 function  sendTestmailToServer(){
 
-        		if(confirm("Wollen Sie wirklich eine Testmail senden ?")){
+        		if(confirm("Wollen Sie wirklich eine Testmail versenden?")){
         			   	
-        		
+        			//irgendwelche Werte mitgeben :)
+        			var state = 2;
+        			var description = "Testmail versendet";
+        			var snooze = 0;
         			var id = 123;
         			
         	    	 $.ajax({
@@ -100,20 +105,22 @@ $(function(){
         	    	 url: host+'/Leitstand/services/MobileNotification/sendTestmail',
         	    	 dataType: "json",
         	    	 data: JSON.stringify({
-          	   	   		 "id": id
+          	   	   		 "id": id,
+        	    		 "state": state,
+        	    		 "snooze_time": snooze,
+          	   	   		 "message": description
           		 		}),
         	    	 success: function(data, textStatus, jqXHR){
-        	    	 alert('Testmail wurde versendet');
+        	    	 alert('Mail wurde erfolgreich versendet');
         	    	 $('#anzfeld').load('home.html');
         	    	 },
         	    	 error: function(jqXHR, textStatus, errorThrown){
-        	    	 alert('Testmail senden error: ' + textStatus);
+        	    	 alert('Mail senden error: ' + textStatus);
         	    	 }
         	    	 });
         		}
         		return false;  
         	 }
-        	 
+    	 
 	 
 });
-

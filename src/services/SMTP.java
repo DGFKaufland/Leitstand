@@ -19,6 +19,7 @@ public class SMTP {
 	public static void sendMail(MobileNotification mn)
     {
 		
+		System.out.println(mn.getID());
 		
 		final String username = "kaufland.sensoren@gmail.com";
 		final String password = "Kaufland2016";
